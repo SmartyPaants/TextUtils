@@ -1,9 +1,12 @@
 # I have created this file - Siddhant Kapoor
 from django.http import HttpResponse
+from django.shortcuts import render 
 
 
 def index(request):
-	return  HttpResponse("Hello")
+    info = {'name':'Siddhant & Soubhagya', 'place':'Unknown Galaxy'}
+    return  render(request, 'index.html', info)
+
 
 def removepunc(request):
     return  HttpResponse("Remove Puctuation")
