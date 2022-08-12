@@ -1,5 +1,4 @@
 # I have created this file - Siddhant Kapoor
-
 from django.http import HttpResponse
 
 
