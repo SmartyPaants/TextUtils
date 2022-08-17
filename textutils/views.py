@@ -5,19 +5,19 @@ from django.shortcuts import render
 def index(request):
     return  render(request, 'index.html')
 
-def removepunc(request):
+def analyse(request):
+    # Get the text
     text_web = request.GET.get('text', 'default')
-    print(text_web)
-    return  HttpResponse("Remove Puctuation")
+    removepunc=request.GET.get('removepunc','off')
 
-def capfirst(request):
-    return  HttpResponse("Capitalise First")
+    if removepunc == "on":
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~+=¬`|'''
+        analysed = ""
+        for char in text_web:
+            if char not in punctuations:
+                analysed = analysed + char
+        params = {'purpose': 'Removed Punctuations', 'analysed_text': analysed}
+        return render(request, 'analyse.html', params)
 
-def newlineremove(request):
-    return  HttpResponse("New Line Remover")
-
-def spaceremove(request):
-    return  HttpResponse("Space Remover")
-
-def charcount(request):
-    return  HttpResponse("Character Count")
+    else:
+        return HttpResponse('Error')
