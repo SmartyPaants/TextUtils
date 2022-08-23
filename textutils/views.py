@@ -10,10 +10,10 @@ def analyse(request):                                       # Function name
     text_web = request.GET.get('text', 'default')
 
     # Remove Punctuation
-    punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~+=¬`|'''              # All punctuations
+    punctuation = '''!()-[]{};:'"\,<>./?@#$%^&*_~+=¬`|'''              # All punctuations
     removed_punc = ""
     for char in text_web:
-        if char not in punctuations:
+        if char not in punctuation:
             removed_punc = removed_punc + char
 
     # UPPERCASE
@@ -37,5 +37,16 @@ def analyse(request):                                       # Function name
         if i == " " or i == punctuations:
             count = count + 1
             wordcount = count
-    params = {'wordcount': wordcount, 'og_text': text_web, 'remove_punc': removed_punc, 'UPPERCASE': UPPERCASE, 'lowercase': lowercase, 'charcount': charcount}      # Parameters
+    
+    # Sentence Count
+    sentcount = ""
+    a = text_web.count('.')
+    b = text_web.count('?')
+    c = text_web.count('!')
+    x = a + b + c
+    count1 = x
+    sentcount = count1
+
+    # Parameters
+    params = {'wordcount': wordcount, 'sentcount': sentcount, 'og_text': text_web, 'remove_punc': removed_punc, 'UPPERCASE': UPPERCASE, 'lowercase': lowercase, 'charcount': charcount}
     return render(request, 'analyse.html', params)        # Sending information to 'analyse.html
