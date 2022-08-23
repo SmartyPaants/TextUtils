@@ -48,5 +48,15 @@ def analyse(request):                                       # Function name
     sentcount = count1
 
     # Parameters
-    params = {'wordcount': wordcount, 'sentcount': sentcount, 'og_text': text_web, 'remove_punc': removed_punc, 'UPPERCASE': UPPERCASE, 'lowercase': lowercase, 'charcount': charcount}
-    return render(request, 'analyse.html', params)        # Sending information to 'analyse.html
+    params = {
+        'wordcount': wordcount, 
+        'sentcount': sentcount, 
+        'og_text': text_web, 
+        'remove_punc': removed_punc, 
+        'UPPERCASE': UPPERCASE, 
+        'lowercase': lowercase, 
+        'charcount': charcount
+    }
+
+    # Sending information to 'analyse.html
+    return render(request, 'analyse.html', params) 
