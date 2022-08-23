@@ -26,8 +26,13 @@ def analyse(request):                                       # Function name
     for char in text_web:
         lowercase = lowercase + char.lower()
 
-    # Character Count
+    # Character Count (With Spaces)
+    charcountwsp = len(text_web)
+
+    # Character Count (Without Spaces)
     charcount = len(text_web)
+    a = text_web.count(" ")
+    charcountwisp = charcount - a
 
     # Word Count
     punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~+=¬`|'''              # All punctuations
@@ -55,7 +60,8 @@ def analyse(request):                                       # Function name
         'remove_punc': removed_punc, 
         'UPPERCASE': UPPERCASE, 
         'lowercase': lowercase, 
-        'charcount': charcount
+        'charcountw': charcountwsp,
+        'charcountwi': charcountwisp
     }
 
     # Sending information to 'analyse.html
