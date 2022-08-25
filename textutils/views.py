@@ -36,10 +36,11 @@ def analyse(request):                                       # Function name
 
     # Word Count
     punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~+=¬`|'''              # All punctuations
+    wordcount = ""
     text = text_web.strip()
     count = 1
     for i in text:
-        if i == " " or i == punctuations:
+        if i == " " or i == punctuations or i == "\n":
             count = count + 1
             wordcount = count
     
